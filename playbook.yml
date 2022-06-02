@@ -1,0 +1,35 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Update system
+      apt:
+        update_cache: yes
+        upgrade: yes
+    - name: Remove snaps
+      apt:
+        name: snapd
+        state: absent
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
+    - name: Allow connections on port 80 and 443
+      iptables:
+        chain: INPUT
+        protocol: tcp
+        destination_ports:
+          - "80"
+          - "443"
+        jump: ACCEPT
+    - name: Readd blocking of other ports
+      iptables:
+        chain: INPUT
+        jump: REJECT
+        reject_with: icmp-host-prohibited
+        state: '{{ item }}'
+      loop: ["absent", "present"]
+    - name: Save iptables state
+      community.general.iptables_state:
+        state: saved
+        path: /etc/iptables/rules.v4
