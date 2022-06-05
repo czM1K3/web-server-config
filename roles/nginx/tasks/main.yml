@@ -1,5 +1,29 @@
 ---
 - name: Install nginx
   apt:
-    name: nginx
+    name: 
+      - nginx
+      - certbot
+      - python3-certbot-nginx
     state: present
+
+- name: Setup nginx
+  import_role: name=hispanico.nginx_revproxy
+  vars:
+    nginx_revproxy_sites:
+      default:
+        ssl: false
+        letsencrypt: false
+
+      mhd.madsoft.cz:
+        domains:
+          - mhd.madsoft.cz
+        upstreams:
+          - { backend_address: 127.0.0.1, backend_port: 8000 }
+        letsencrypt: true
+        letsencrypt_email: "{{ letsencrypt_email }}"
+        conn_upgrade: true
+    nginx_revproxy_certbot_auto: false
+    nginx_revproxy_certbot_packages:
+      - certbot
+      - python3-certbot-nginx

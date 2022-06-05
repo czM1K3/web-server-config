@@ -1,0 +1,18 @@
+---
+- import_role: name=geerlingguy.docker
+- name: Install required system packages
+  apt:
+    name: 
+      - python3-docker
+      - docker-compose
+    state: present
+- name: Login to GitHub container registry
+  docker_login:
+    username: "{{ docker_username }}"
+    password: "{{ github_token }}"
+    registry: ghcr.io
+- name: Login to GitLab container registry
+  docker_login:
+    username: "{{ docker_username }}"
+    password: "{{ gitlab_token }}"
+    registry: registry.gitlab.com

@@ -5,6 +5,8 @@
   roles:
     - firewall
     - nginx
+    - docker
+    - deployments-mhd
 
   pre_tasks:
     - import_tasks: tasks/pre-task.yml
