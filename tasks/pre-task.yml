@@ -1,0 +1,9 @@
+---
+- name: Update system
+  apt:
+    update_cache: yes
+    upgrade: yes
+- name: Remove snaps
+  apt:
+    name: snapd
+    state: absent
