@@ -4,6 +4,7 @@
 ```bash
 ansible-galaxy install geerlingguy.docker
 ansible-galaxy install hispanico.nginx_revproxy
+ansible-galaxy install geerlingguy.swap
 ```
 
 ## Run

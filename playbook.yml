@@ -3,6 +3,7 @@
   become: true
 
   roles:
+    - swap
     - firewall
     - nginx
     - docker
