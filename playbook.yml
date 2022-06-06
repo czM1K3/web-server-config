@@ -10,3 +10,6 @@
 
   pre_tasks:
     - import_tasks: tasks/pre-task.yml
+
+  post_tasks:
+    - import_tasks: tasks/post-task.yml
