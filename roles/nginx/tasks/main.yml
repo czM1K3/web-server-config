@@ -23,6 +23,14 @@
         letsencrypt: true
         letsencrypt_email: "{{ letsencrypt_email }}"
         conn_upgrade: true
+      signal.madsoft.cz:
+        domains:
+          - signal.madsoft.cz
+        upstreams:
+          - { backend_address: 127.0.0.1, backend_port: 8001 }
+        letsencrypt: true
+        letsencrypt_email: "{{ letsencrypt_email }}"
+        conn_upgrade: true
     nginx_revproxy_certbot_auto: false
     nginx_revproxy_certbot_packages:
       - certbot
