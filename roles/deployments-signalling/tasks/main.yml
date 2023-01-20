@@ -5,7 +5,7 @@
       version: '2'
       services:
         web:
-          image: ghcr.io/czm1k3/webrtc-signalling-server:4cd046e
+          image: ghcr.io/czm1k3/webrtc-signalling-server:9c5456e
           ports:
             - "8001:3000"
           restart: always
