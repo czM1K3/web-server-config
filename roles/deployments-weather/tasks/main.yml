@@ -1,0 +1,21 @@
+- name: Deploy Weather API to Docker
+  community.docker.docker_compose:
+    project_name: weather
+    definition:
+      version: '2'
+      services:
+        api:
+          image: ghcr.io/czm1k3/weather-api:7862738
+          environment:
+            - URL=https://weather.madsoft.cz
+            - PAST=12
+            - REDIS_HOSTNAME=redis
+            - REDIS_PORT=6379
+          ports:
+            - "8000:8080"
+          depends_on:
+            - redis
+          restart: always
+        redis:
+          image: redis:alpine
+          restart: always

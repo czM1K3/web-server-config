@@ -1,2 +1,2 @@
 [web]
-130.61.127.96 ansible_user=ubuntu
+web.teleport.madsoft.cz ansible_user=ubuntu

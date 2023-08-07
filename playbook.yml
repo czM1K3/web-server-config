@@ -3,15 +3,15 @@
   become: true
 
   roles:
-    - swap
-    - firewall
-    - nginx
-    - docker
-    - deployments-mhd
-    - deployments-signalling
+    # - swap
+    # - firewall
+    # - nginx
+    # - docker
+    - deployments-weather
+    # - deployments-signalling
 
-  pre_tasks:
-    - import_tasks: tasks/pre-task.yml
+  # pre_tasks:
+  #   - import_tasks: tasks/pre-task.yml
 
-  post_tasks:
-    - import_tasks: tasks/post-task.yml
+  # post_tasks:
+  #   - import_tasks: tasks/post-task.yml
